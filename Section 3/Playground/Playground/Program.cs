@@ -11,6 +11,9 @@ namespace Playground
     {
         static void Main(string[] args)
         {
+            var customer = new MyLibrary.Customer();
+            customer.UpdateName("Name");
+
             MyObject myObject = new MyObject(); 
             MyObject myObject2 = new MyObject(10, 10);
 
