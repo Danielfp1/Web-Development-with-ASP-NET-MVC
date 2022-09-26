@@ -29,13 +29,13 @@ namespace HelloMVC.Controllers
             return View();
         }
 
-        public ActionResult ViewCustomer(string Name, string Telephone)
+        public ActionResult ViewCustomer(Customer postedCustomer)
         {
             Customer customer = new Customer();
             
             customer.Id = Guid.NewGuid().ToString();
-            customer.Name = Name;
-            customer.Telephone = Telephone;
+            customer.Name = postedCustomer.Name;
+            customer.Telephone = postedCustomer.Telephone;
 
             return View(customer);
         }
