@@ -25,6 +25,9 @@
                     <li>@Html.ActionLink("Sobre", "About", "Home")</li>
                     <li>@Html.ActionLink("Contato", "Contact", "Home")</li>
                 </ul>
+                @{ 
+                    Html.RenderAction("Basket", "Home");
+                }
             </div>
         </div>
     </div>
