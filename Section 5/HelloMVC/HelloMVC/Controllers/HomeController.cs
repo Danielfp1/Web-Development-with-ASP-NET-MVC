@@ -107,6 +107,35 @@ namespace HelloMVC.Controllers
             }
         }
 
+        public ActionResult DeleteCustomer(string id)
+        {
+            Customer customer = customers.FirstOrDefault(c => c.Id == id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return View(customer);
+            }
+        }
+
+        [HttpPost]
+        [ActionName("DeleteCustomer")] //overwrite actionname
+        public ActionResult ConfirmDeleteCustomer(string id)
+        {
+            Customer customer = customers.FirstOrDefault(c => c.Id == id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                customers.Remove(customer);
+                return RedirectToAction("CustomerList");
+            }
+        }
+
         public ActionResult CustomerList()
         {
             return View(customers);
