@@ -16,7 +16,7 @@ namespace HelloMVC.Controllers
         public HomeController()
         {
             customers = cache["customers"] as List<Customer>;
-            if(customers == null)
+            if (customers == null)
             {
                 customers = new List<Customer>();
             }
@@ -47,15 +47,17 @@ namespace HelloMVC.Controllers
             return View();
         }
 
-        public ActionResult ViewCustomer(Customer postedCustomer)
+        public ActionResult ViewCustomer(string id)
         {
-            Customer customer = new Customer();
-            
-            customer.Id = Guid.NewGuid().ToString();
-            customer.Name = postedCustomer.Name;
-            customer.Telephone = postedCustomer.Telephone;
-
-            return View(customer);
+            Customer customer = customers.FirstOrDefault(c => c.Id == id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return View(customer);
+            }
         }
 
         public ActionResult AddCustomer()
@@ -71,6 +73,38 @@ namespace HelloMVC.Controllers
             SaveCache();
 
             return RedirectToAction("CustomerList");
+        }
+
+        public ActionResult EditCustomer(string id)
+        {
+            Customer customer = customers.FirstOrDefault(c => c.Id == id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return View(customer);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult EditCustomer(Customer customer, string Id)
+        {
+            var customerToEdit = customers.FirstOrDefault(c => c.Id == Id);
+
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                customerToEdit.Name = customer.Name;
+                customerToEdit.Telephone = customer.Telephone;
+                SaveCache();
+
+                return RedirectToAction("CustomerList");
+            }
         }
 
         public ActionResult CustomerList()
