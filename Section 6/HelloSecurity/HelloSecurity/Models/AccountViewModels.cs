@@ -79,6 +79,14 @@ namespace HelloSecurity.Models
         [Display(Name = "Confirmar senha")]
         [Compare("Password", ErrorMessage = "A senha e a senha de confirmação não coincidem.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Nome")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Sobrenome")]
+        public string LastName { get; set; }
     }
 
     public class ResetPasswordViewModel
