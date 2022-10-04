@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace MyShop.DataAccess.InMemory
 {
-    internal class ProductRepository
+    public class ProductRepository
     {
         ObjectCache cache = MemoryCache.Default;
         List<Product> products;
