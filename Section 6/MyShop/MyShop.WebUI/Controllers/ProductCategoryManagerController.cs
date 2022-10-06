@@ -1,51 +1,44 @@
-﻿using System;
+﻿using MyShop.Core.Models;
+using MyShop.DataAccess.InMemory;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.Mvc;
-using MyShop.Core.Models;
-using MyShop.Core.ViewModels;
-using MyShop.DataAccess.InMemory;
 
 namespace MyShop.WebUI.Controllers
 {
-    public class ProductManagerController : Controller
+    public class ProductCategoryManagerController : Controller
     {
-        ProductRepository context;
-        ProductCategoryRepository productCategories;
+        ProductCategoryRepository context;
 
-        public ProductManagerController()
+        public ProductCategoryManagerController()
         {
-            context = new ProductRepository();
-            productCategories = new ProductCategoryRepository();
+            context = new ProductCategoryRepository();
         }
         // GET: ProductManager
         public ActionResult Index()
         {
-            List<Product> products = context.Collection().ToList();
-            return View(products);
+            List<ProductCategory> productCategories = context.Collection().ToList();
+            return View(productCategories);
         }
 
         public ActionResult Create()
         {
-            ProductManagerViewModel viewModel = new ProductManagerViewModel();
-
-            viewModel.Product = new Product();
-            viewModel.ProductCategories = productCategories.Collection();
-            return View(viewModel);
+            ProductCategory productCategories = new ProductCategory();
+            return View(productCategories);
         }
 
         [HttpPost]
-        public ActionResult Create(Product product)
+        public ActionResult Create(ProductCategory productCategory)
         {
             if (!ModelState.IsValid)
             {
-                return View(product);
+                return View(productCategory);
             }
             else
             {
-                context.Insert(product);
+                context.Insert(productCategory);
                 context.Commit();
 
                 return RedirectToAction("Index");
@@ -54,26 +47,21 @@ namespace MyShop.WebUI.Controllers
 
         public ActionResult Edit(string Id)
         {
-            Product product = context.Find(Id);
-            if (product == null)
+            ProductCategory productCategories = context.Find(Id);
+            if (productCategories == null)
             {
                 return HttpNotFound();
             }
             else
             {
-                ProductManagerViewModel viewModel = new ProductManagerViewModel();
-
-                viewModel.Product = new Product();
-                viewModel.ProductCategories = productCategories.Collection();
-                return View(viewModel);
+                return View(productCategories);
             }
         }
 
         [HttpPost]
-        public ActionResult Edit(Product product, string Id)
+        public ActionResult Edit(ProductCategory product, string Id)
         {
-            Product productToEdit = context.Find(Id);
-
+            ProductCategory productToEdit = context.Find(Id);
             if (productToEdit == null)
             {
                 return HttpNotFound();
@@ -86,10 +74,6 @@ namespace MyShop.WebUI.Controllers
                 }
 
                 productToEdit.Category = product.Category;
-                productToEdit.Description = product.Description;
-                productToEdit.Image = product.Image;
-                productToEdit.Name = product.Name;
-                productToEdit.Price = product.Price;
 
                 context.Commit();
 
@@ -99,7 +83,7 @@ namespace MyShop.WebUI.Controllers
 
         public ActionResult Delete(string Id)
         {
-            Product productToDelete = context.Find(Id);
+            ProductCategory productToDelete = context.Find(Id);
             if (productToDelete == null)
             {
                 return HttpNotFound();
@@ -115,8 +99,9 @@ namespace MyShop.WebUI.Controllers
         [ActionName("Delete")]
         public ActionResult ConfirmDelete(string Id)
         {
-            Product productToDelete = context.Find(Id);
-            if (productToDelete == null)
+            ProductCategory productCategoryToDelete = context.Find(Id);
+
+            if (productCategoryToDelete == null)
             {
                 return HttpNotFound();
             }

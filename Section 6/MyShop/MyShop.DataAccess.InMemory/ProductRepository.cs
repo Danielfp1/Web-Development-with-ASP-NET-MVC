@@ -47,7 +47,7 @@ namespace MyShop.DataAccess.InMemory
             return product ?? throw new Exception("Product no found");
         }
 
-        public IQueryable<Product> Colletion()
+        public IQueryable<Product> Collection()
         {
             return products.AsQueryable();
         }
