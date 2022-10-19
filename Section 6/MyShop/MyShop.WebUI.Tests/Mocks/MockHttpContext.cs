@@ -27,7 +27,7 @@ namespace MyShop.WebUI.Tests.Mocks
                 return request;
             }
         }
-        
+
         public override HttpResponseBase Response
         {
             get
@@ -72,3 +72,4 @@ namespace MyShop.WebUI.Tests.Mocks
             }
         }
     }
+}
