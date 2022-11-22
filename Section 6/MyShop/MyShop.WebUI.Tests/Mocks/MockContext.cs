@@ -8,14 +8,13 @@ using System.Threading.Tasks;
 
 namespace MyShop.WebUI.Tests.Mocks
 {
-    public class MockContext<T> : IRepository<T> where T : BaseEntity
+    public class MockContext<T> : IRepository<T> where T: BaseEntity
     {
-
-        List<T> items = new List<T>();
+        List<T> items;
         string className;
 
         public MockContext()
-        {
+        { 
             items = new List<T>();
         }
 
@@ -39,7 +38,7 @@ namespace MyShop.WebUI.Tests.Mocks
             }
             else
             {
-                throw new Exception(className + " Not Found");
+                throw new Exception(className + " Not found");
             }
         }
 
@@ -52,7 +51,7 @@ namespace MyShop.WebUI.Tests.Mocks
             }
             else
             {
-                throw new Exception(className + " Not Found");
+                throw new Exception(className + " Not found");
             }
         }
 
@@ -71,8 +70,10 @@ namespace MyShop.WebUI.Tests.Mocks
             }
             else
             {
-                throw new Exception(className + " Not Found");
+                throw new Exception(className + " Not found");
             }
         }
+
     }
 }
+

@@ -47,26 +47,13 @@ namespace MyShop.WebUI
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
-
-            //InMemory
-            //container.RegisterType<IRepository<Product>, InMemoryRepository<Product>>();
-            //container.RegisterType<IRepository<ProductCategory>, InMemoryRepository<ProductCategory>>();
-            
-            //SQL
             container.RegisterType<IRepository<Product>, SQLRepository<Product>>();
             container.RegisterType<IRepository<ProductCategory>, SQLRepository<ProductCategory>>();
             container.RegisterType<IRepository<Basket>, SQLRepository<Basket>>();
             container.RegisterType<IRepository<BasketItem>, SQLRepository<BasketItem>>();
-<<<<<<< Updated upstream
-            container.RegisterType<IRepository<Customer>, SQLRepository<Customer>>();
-=======
-<<<<<<< Updated upstream
-=======
             container.RegisterType<IRepository<Customer>, SQLRepository<Customer>>();
             container.RegisterType<IRepository<Order>, SQLRepository<Order>>();
 
->>>>>>> Stashed changes
->>>>>>> Stashed changes
             container.RegisterType<IBasketService, BasketService>();
             container.RegisterType<IOrderService, OrderService>();
         }

@@ -7,7 +7,6 @@ using MyShop.Core.Models;
 using MyShop.DataAccess.InMemory;
 using MyShop.Core.ViewModels;
 using MyShop.Core.Contracts;
-using System.Web.Services.Protocols;
 using System.IO;
 
 namespace MyShop.WebUI.Controllers
@@ -17,10 +16,9 @@ namespace MyShop.WebUI.Controllers
         IRepository<Product> context;
         IRepository<ProductCategory> productCategories;
 
-        public ProductManagerController(IRepository<Product> ProductContext, IRepository<ProductCategory> productCategoriesContext)
-        {
-            context = ProductContext;
-            productCategories = productCategoriesContext;
+        public ProductManagerController(IRepository<Product> productContext, IRepository<ProductCategory> productCategoryContext) {
+            context = productContext;
+            productCategories = productCategoryContext;
         }
         // GET: ProductManager
         public ActionResult Index()
@@ -29,8 +27,7 @@ namespace MyShop.WebUI.Controllers
             return View(products);
         }
 
-        public ActionResult Create()
-        {
+        public ActionResult Create() {
             ProductManagerViewModel viewModel = new ProductManagerViewModel();
 
             viewModel.Product = new Product();
@@ -39,19 +36,18 @@ namespace MyShop.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Product product, HttpPostedFileBase file)
-        {
+        public ActionResult Create(Product product, HttpPostedFileBase file) {
             if (!ModelState.IsValid)
             {
                 return View(product);
             }
-            else
-            {
-                if(file != null)
-                {
+            else {
+
+                if (file != null) {
                     product.Image = product.Id + Path.GetExtension(file.FileName);
                     file.SaveAs(Server.MapPath("//Content//ProductImages//") + product.Image);
                 }
+
                 context.Insert(product);
                 context.Commit();
 
@@ -60,15 +56,13 @@ namespace MyShop.WebUI.Controllers
 
         }
 
-        public ActionResult Edit(string Id)
-        {
+        public ActionResult Edit(string Id) {
             Product product = context.Find(Id);
             if (product == null)
             {
                 return HttpNotFound();
             }
-            else
-            {
+            else {
                 ProductManagerViewModel viewModel = new ProductManagerViewModel();
                 viewModel.Product = product;
                 viewModel.ProductCategories = productCategories.Collection();
@@ -78,8 +72,7 @@ namespace MyShop.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Product product, string Id, HttpPostedFileBase file)
-        {
+        public ActionResult Edit(Product product, string Id, HttpPostedFileBase file) {
             Product productToEdit = context.Find(Id);
 
             if (productToEdit == null)
@@ -88,14 +81,12 @@ namespace MyShop.WebUI.Controllers
             }
             else
             {
-                if (!ModelState.IsValid)
-                {
+                if (!ModelState.IsValid) {
                     return View(product);
                 }
 
-                if (file != null)
-                {
-                    productToEdit.Image = productToEdit.Id + Path.GetExtension(file.FileName);
+                if (file != null) {
+                    productToEdit.Image = product.Id + Path.GetExtension(file.FileName);
                     file.SaveAs(Server.MapPath("//Content//ProductImages//") + productToEdit.Image);
                 }
 
@@ -126,8 +117,7 @@ namespace MyShop.WebUI.Controllers
 
         [HttpPost]
         [ActionName("Delete")]
-        public ActionResult ConfirmDelete(string Id)
-        {
+        public ActionResult ConfirmDelete(string Id) {
             Product productToDelete = context.Find(Id);
 
             if (productToDelete == null)

@@ -1,5 +1,5 @@
-﻿using MyShop.Core.Models;
-using System.Linq;
+﻿using System.Linq;
+using MyShop.Core.Models;
 
 namespace MyShop.Core.Contracts
 {
