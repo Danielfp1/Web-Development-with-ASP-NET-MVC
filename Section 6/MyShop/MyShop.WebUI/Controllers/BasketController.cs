@@ -10,12 +10,15 @@ namespace MyShop.WebUI.Controllers
 {
     public class BasketController : Controller
     {
+        IRepository<Customer> customers;
         IBasketService basketService;
         IOrderService orderService;
 
-        public BasketController(IBasketService BasketService, IOrderService OrderService) {
+        public BasketController(IBasketService BasketService, IOrderService OrderService, IRepository<Customer> Customers)
+        {
             this.basketService = BasketService;
             this.orderService = OrderService;
+            this.customers = Customers;
         }
         // GET: Basket2
         public ActionResult Index()
@@ -38,21 +41,48 @@ namespace MyShop.WebUI.Controllers
             return RedirectToAction("Index");
         }
 
-        public PartialViewResult BasketSummary() {
+        public PartialViewResult BasketSummary()
+        {
             var basketSummary = basketService.GetBasketSummary(this.HttpContext);
 
             return PartialView(basketSummary);
         }
 
-        public ActionResult Checkout() {
-            return View();
+        [Authorize]
+        public ActionResult Checkout()
+        {
+            Customer customer = customers.Collection().FirstOrDefault(c => c.Email == User.Identity.Name);
+
+            if (customer != null)
+            {
+                Order order = new Order()
+                {
+                    Email = customer.Email,
+                    City = customer.City,
+                    State = customer.State,
+                    Street = customer.Street,
+                    FirstName = customer.FirstName,
+                    Surname = customer.LastName,
+                    ZipCode = customer.ZipCode
+                };
+
+                return View(order);
+            }
+            else
+            {
+                return RedirectToAction("Error");
+            }
+
         }
 
         [HttpPost]
-        public ActionResult Checkout(Order order) {
+        [Authorize]
+        public ActionResult Checkout(Order order)
+        {
 
             var basketItems = basketService.GetBasketItems(this.HttpContext);
             order.OrderStatus = "Order Created";
+            order.Email = User.Identity.Name;
 
             //process payment
 
@@ -63,7 +93,8 @@ namespace MyShop.WebUI.Controllers
             return RedirectToAction("Thankyou", new { OrderId = order.Id });
         }
 
-        public ActionResult ThankYou(string OrderId) {
+        public ActionResult ThankYou(string OrderId)
+        {
             ViewBag.OrderId = OrderId;
             return View();
         }
