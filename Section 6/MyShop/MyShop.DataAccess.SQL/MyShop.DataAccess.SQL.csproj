@@ -1,20 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0A5F8C69-388B-49AE-978D-31A992E30851}</ProjectGuid>
+    <ProjectGuid>{3A4704F8-042D-4450-A79A-AA096ED4F5CD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MyShop.DataAccess.SQL</RootNamespace>
     <AssemblyName>MyShop.DataAccess.SQL</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,10 +31,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -52,35 +48,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContext.cs" />
-    <Compile Include="Migrations\202210071936276_Initial.cs" />
-    <Compile Include="Migrations\202210071936276_Initial.designer.cs">
-      <DependentUpon>202210071936276_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201711071327340_Initial.cs" />
+    <Compile Include="Migrations\201711071327340_Initial.Designer.cs">
+      <DependentUpon>201711071327340_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202210131109029_AddBasket.cs" />
-    <Compile Include="Migrations\202210131109029_AddBasket.designer.cs">
-      <DependentUpon>202210131109029_AddBasket.cs</DependentUpon>
+    <Compile Include="Migrations\201711091321341_AddBasket.cs" />
+    <Compile Include="Migrations\201711091321341_AddBasket.Designer.cs">
+      <DependentUpon>201711091321341_AddBasket.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202210141907068_Initial1.cs" />
-    <Compile Include="Migrations\202210141907068_Initial1.designer.cs">
-      <DependentUpon>202210141907068_Initial1.cs</DependentUpon>
+    <Compile Include="Migrations\201801032024566_AddCustomer.cs" />
+    <Compile Include="Migrations\201801032024566_AddCustomer.Designer.cs">
+      <DependentUpon>201801032024566_AddCustomer.cs</DependentUpon>
     </Compile>
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
-    <Compile Include="Migrations\202210201446470_AddCustomers.cs" />
-    <Compile Include="Migrations\202210201446470_AddCustomers.designer.cs">
-      <DependentUpon>202210201446470_AddCustomers.cs</DependentUpon>
+    <Compile Include="Migrations\201801101446455_AddedOrders.cs" />
+    <Compile Include="Migrations\201801101446455_AddedOrders.Designer.cs">
+      <DependentUpon>201801101446455_AddedOrders.cs</DependentUpon>
     </Compile>
-<<<<<<< Updated upstream
-=======
-    <Compile Include="Migrations\202210211409421_AddedOrders.cs" />
-    <Compile Include="Migrations\202210211409421_AddedOrders.designer.cs">
-      <DependentUpon>202210211409421_AddedOrders.cs</DependentUpon>
-    </Compile>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLRepository.cs" />
@@ -91,43 +74,23 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyShop.Core\MyShop.Core.csproj">
-      <Project>{32B28E68-4FAF-46C2-91C2-E39AC27C5493}</Project>
+      <Project>{9B029460-6F4E-46AE-9B88-08C5FE08C0A4}</Project>
       <Name>MyShop.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202210071936276_Initial.resx">
-      <DependentUpon>202210071936276_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711071327340_Initial.resx">
+      <DependentUpon>201711071327340_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202210131109029_AddBasket.resx">
-      <DependentUpon>202210131109029_AddBasket.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711091321341_AddBasket.resx">
+      <DependentUpon>201711091321341_AddBasket.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202210141907068_Initial1.resx">
-      <DependentUpon>202210141907068_Initial1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801032024566_AddCustomer.resx">
+      <DependentUpon>201801032024566_AddCustomer.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< Updated upstream
-    <EmbeddedResource Include="Migrations\202210201446470_AddCustomers.resx">
-      <DependentUpon>202210201446470_AddCustomers.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801101446455_AddedOrders.resx">
+      <DependentUpon>201801101446455_AddedOrders.cs</DependentUpon>
     </EmbeddedResource>
-=======
-<<<<<<< Updated upstream
-=======
-    <EmbeddedResource Include="Migrations\202210201446470_AddCustomers.resx">
-      <DependentUpon>202210201446470_AddCustomers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202210211409421_AddedOrders.resx">
-      <DependentUpon>202210211409421_AddedOrders.cs</DependentUpon>
-    </EmbeddedResource>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>Este projeto faz referência a pacotes do NuGet que não estão presentes neste computador. Use a Restauração de Pacotes do NuGet para baixá-los.  Para obter mais informações, consulte http://go.microsoft.com/fwlink/?LinkID=322105. O arquivo ausente é {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
-  </Target>
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>

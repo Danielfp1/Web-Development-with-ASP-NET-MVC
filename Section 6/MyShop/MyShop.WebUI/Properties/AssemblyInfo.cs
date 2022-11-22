@@ -2,34 +2,34 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-// As informações gerais sobre um assembly são controladas através do seguinte
-// conjunto de atributos a seguir. Altere esses valores de atributo para modificar as informações
-// associadas a um assembly.
+// General Information about an assembly is controlled through the following
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
 [assembly: AssemblyTitle("MyShop.WebUI")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("MyShop.WebUI")]
-[assembly: AssemblyCopyright("Copyright ©  2022")]
+[assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-// Definir ComVisible como falso torna não visíveis os tipos neste assembly
-// para componentes COM. Caso precise acessar um tipo neste assembly a partir de
-// COM, defina o atributo ComVisible como true nesse tipo.
+// Setting ComVisible to false makes the types in this assembly not visible
+// to COM components.  If you need to access a type in this assembly from
+// COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
 
-// A GUID a seguir será referente à ID do typelib se este projeto for exposto ao COM
-[assembly: Guid("f6f73a44-97e3-4b2a-827f-6037505eb99a")]
+// The following GUID is for the ID of the typelib if this project is exposed to COM
+[assembly: Guid("5d8ad84b-30ab-4fe7-8f95-2a1058797260")]
 
-// As informações de versão de um assembly consistem nos quatro valores a seguir:
+// Version information for an assembly consists of the following four values:
 //
 //      Major Version
-//      Versão Secundária
+//      Minor Version
 //      Build Number
 //      Revision
 //
-// É possível especificar todos os valores ou definir como padrão os números de revisão e de versão
-// usando o '*' como mostrado abaixo:
+// You can specify all the values or you can default the Revision and Build Numbers
+// by using the '*' as shown below:
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
